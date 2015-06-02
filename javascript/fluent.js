@@ -100,6 +100,12 @@
 					.find(".text")
 						.text(fluentLocales[locale]);
 				
+				// Reload deferred CMS panels
+				$('.cms-panel-deferred')
+					.html('') // $('.cms-panel.deferred').redraw() won't reload if any child elements are found
+					.data('deferredNoCache', true) // Prevent deferred data being cached/loaded from cache
+					.redraw();
+				
 				return false;
 			}
 		});
